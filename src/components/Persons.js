@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Person from "./Person";
 
 class Persons extends Component {
+  // Initializing State for Persons Component
   state = {
     persons: [
       {
@@ -43,19 +44,23 @@ class Persons extends Component {
     mappedPerson: []
   };
 
+  // Run when the Component first mounts
   componentDidMount() {
     this.showPersons();
   }
 
+  // Set state.mappedPerson to an Array of "Person"s
   showPersons = () => {
     this.setState({
       mappedPerson: this.state.persons.map(this.mapPerson)
     });
   };
 
+  // Returns element Person which has been passed a prop "person"
   mapPerson = person => <Person person={person} />;
 
   render() {
+    // Render the full Array of Person elements which were each passed a different person by .map(mapPerson)
     return <div>{this.state.mappedPerson}</div>;
   }
 }
